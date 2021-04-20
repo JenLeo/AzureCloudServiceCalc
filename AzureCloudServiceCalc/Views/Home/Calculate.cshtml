@@ -1,0 +1,30 @@
+﻿@model AzureCloudServiceCalc.Models.AzureCloudService
+
+@{
+    ViewBag.Title = "Azure Cloud Service Cost Calculator";
+}
+
+<h2>@ViewBag.Title</h2>
+
+@using (Html.BeginForm())
+{
+    @Html.ValidationSummary(true)
+    <fieldset>
+        <legend>Azure Cloud Service</legend>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.NoInstances)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.NoInstances)
+            @Html.ValidationMessageFor(model => model.NoInstances)
+        </div>
+        <div class="editor-field">
+            Size @Html.DropDownList("InstanceSize")
+        </div>
+
+        <p>
+            <input type="submit" value="Calculate Yearly Cost" />
+        </p>
+    </fieldset>
+}
